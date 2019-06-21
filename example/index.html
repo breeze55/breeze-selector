@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 18px;">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<title></title>
+	<style type="text/css">
+		.wrap {
+			width: 375px;
+			margin: 0 auto;
+		}
+		input {
+			width: 300px;
+			height: 50px;
+			margin: 10px auto;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			display: block;
+			text-indent: 2em;
+		}
+	</style>
+<script type="text/javascript" src="../dist/breeze-selector-1.0.0.min.js"></script></head>
+<body>
+	<div class="wrap">
+		<h3>一级联动</h3>
+		<p>默认值: ['30岁']</p>
+		<p>范围: ['22岁', '50岁']</p>
+		<input id="selector1" type="text" name="" readonly="readonly" placeholder="请选择年龄">
+		<script type="text/javascript">
+			let ageRange = [];
+			for ( let i = 0; i < 29; i++ ) {
+				ageRange.push({
+					id: i,
+					value: 22 + i,
+					label: ( 22 + i ) + '岁'
+				});
+			}
+			var SELECTOR1 = new BreezeSelector({
+				target: "selector1",
+				type: "date",
+				format: 'age',
+				currentValue: ['30岁'],
+				data: [ageRange]
+			});
+		</script>
+		<h3>多级联动</h3>
+		<p>默认值: ['30岁', '男']</p>
+		<p>范围: ['22岁', '50岁']</p>
+		<input id="selector2" type="text" name="" readonly="readonly" placeholder="请选择年龄和性别">
+		<script type="text/javascript">
+			let ageRange2 = [];
+			let sexRage2 = [
+				{
+					id: 0,
+					label: '男',
+					value: 'M'
+				},
+				{
+					id: 1,
+					label: '女',
+					value: 'F'
+				}
+			];
+			for ( let i = 0; i < 29; i++ ) {
+				ageRange2.push({
+					id: i,
+					value: 22 + i,
+					label: ( 22 + i ) + '岁'
+				});
+			}
+			var SELECTOR2 = new BreezeSelector({
+				target: "selector2",
+				type: "date",
+				format: 'age-sex',
+				currentValue: ['30岁', '男'],
+				data: [ageRange2, sexRage2],
+				ensureCallback: function ( val ) {
+					let strVal = '';
+			    val.forEach(( item, index ) => {
+			      if ( index == val.length - 1 ) {
+			        strVal += item.label;
+			      } else {
+			        strVal += item.label + ',';
+			      }
+			    });
+			    SELECTOR2.target.value = strVal;
+				}
+			});
+		</script>
+	</div>
+</body>
+</html>
