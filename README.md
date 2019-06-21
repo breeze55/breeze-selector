@@ -1,4 +1,4 @@
-## breeze-date
+## breeze-selector
 
 这是一个基于原生JavaScript开发的移动端下拉选择插件
 
@@ -35,7 +35,7 @@ npm install breeze-selector --save
   }
   var SELECTOR1 = new BreezeSelector({
     target: "selector1",
-    type: "date",
+    type: "selector",
     format: 'age',
     currentValue: ['30岁'],
     data: [ageRange]
