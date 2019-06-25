@@ -4,7 +4,7 @@
 
 ## 版本 
 
-1.0.0
+1.0.1
 
 ## 安装
 
@@ -18,7 +18,7 @@ npm install breeze-selector --save
 直接使用script引用
 
 ```js
-<script src="../dist/breeze-selector-1.0.0.min.js"></script>
+<script src="../dist/breeze-selector-1.0.1.min.js"></script>
 ```
 
 ## 使用

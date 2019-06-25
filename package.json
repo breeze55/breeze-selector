@@ -1,8 +1,8 @@
 {
   "name": "breeze-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a selector plug-in based on native JavaScript developed.",
-  "main": "dist/breeze-selector-1.0.0.min.js",
+  "main": "dist/breeze-selector-1.0.1.min.js",
   "directories": {
     "example": "example"
   },
