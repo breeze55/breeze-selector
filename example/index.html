@@ -19,10 +19,10 @@
 			text-indent: 2em;
 		}
 	</style>
-<script type="text/javascript" src="../dist/breeze-selector-1.0.1.min.js"></script></head>
+<script type="text/javascript" src="../dist/breeze-selector-1.0.3.min.js"></script></head>
 <body>
 	<div class="wrap">
-		<h3>一级联动</h3>
+		<p>一级联动</p>
 		<p>默认值: ['30岁']</p>
 		<p>范围: ['22岁', '50岁']</p>
 		<input id="selector1" type="text" name="" readonly="readonly" placeholder="请选择年龄">
@@ -37,13 +37,25 @@
 			}
 			var SELECTOR1 = new BreezeSelector({
 				target: "selector1",
-				type: "selector",
+				type: "date",
 				format: 'age',
 				currentValue: ['30岁'],
-				data: [ageRange]
+				data: [ageRange],
+				ensureCallback: function ( val ) {
+					let strVal = '';
+			    val.forEach(( item, index ) => {
+			      if ( index == val.length - 1 ) {
+			        strVal += item.label;
+			      } else {
+			        strVal += item.label + ',';
+			      }
+			    });
+			    SELECTOR1.target.value = strVal;
+				}
 			});
 		</script>
-		<h3>多级联动</h3>
+		<hr>
+		<p>多级联动</p>
 		<p>默认值: ['30岁', '男']</p>
 		<p>范围: ['22岁', '50岁']</p>
 		<input id="selector2" type="text" name="" readonly="readonly" placeholder="请选择年龄和性别">
@@ -70,7 +82,7 @@
 			}
 			var SELECTOR2 = new BreezeSelector({
 				target: "selector2",
-				type: "selector",
+				type: "date",
 				format: 'age-sex',
 				currentValue: ['30岁', '男'],
 				data: [ageRange2, sexRage2],
